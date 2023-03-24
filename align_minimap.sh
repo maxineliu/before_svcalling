@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=18:00:00 #e.g. 24:00:00, 1-13:00:00
+#SBATCH --time=15:00:00 #e.g. 24:00:00, 1-13:00:00
 #SBATCH --job-name=fq-minimap+samtools-bam+csi
 #SBATCH --mem=45G #e.g. 100G
 #SBATCH --account=def-jfu
@@ -11,7 +11,7 @@
 
 start_time=`date --date='0 days ago' "+%Y-%m-%d %H:%M:%S"`
 
-cd /home/maxine91/projects/def-jfu/results/divided_minimap.dir
+cd /home/maxine91/scratch/divided_minimap.dir
 module load StdEnv/2020 minimap2/2.24 samtools/1.16.1
 
 
@@ -42,7 +42,7 @@ else
   exit
 fi
 
-samtools sort -m 900M -@ 31 alndivided.$sample_name.bam -o divsorted.$sample_name.bam
+samtools sort -m 1100M -@ 31 /home/maxine91/projects/def-jfu/results/divided_minimap.dir/alndivided.$sample_name.bam -o divsorted.$sample_name.bam
 # -m :Approximately the maximum required memory per thread, specified either in bytes or with a K, M, or G suffix. [768 MiB]
 # To prevent sort from creating a huge number of temporary files, it enforces a minimum value of 1M for this setting.
 # -@ INT: Set number of sorting and compression threads. By default, operation is single-threaded.
