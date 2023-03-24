@@ -13,3 +13,5 @@ SIZE of INPUT: genome.fna 4.36G; sample.fq 262G
 CPU: 32
 
 Memory: 38 GB
+
+Time: 13 hours
